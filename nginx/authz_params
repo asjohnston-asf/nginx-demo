@@ -1,0 +1,2 @@
+uwsgi_param JWT_GROUP_NAME HAS_ACCESS_TO_RESTRICTED_DATA;
+uwsgi_param JWT_APP_UID asf_urs;

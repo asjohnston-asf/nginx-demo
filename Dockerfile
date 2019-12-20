@@ -5,9 +5,7 @@ RUN apt update -y; \
     pip3 install uwsgi pyjwt;
 
 COPY content /content
-COPY nginx.conf /etc/nginx/nginx.conf
-COPY auth.py /src/auth.py
-COPY uwsgi.conf /etc/init/uwsgi.conf
-COPY go.sh /src/go.sh
+COPY nginx /etc/nginx
+COPY src /src
 
 ENTRYPOINT ["sh", "/src/go.sh"]
