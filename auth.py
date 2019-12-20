@@ -19,6 +19,15 @@ def application(env, start_response):
         start_response('401 Unauthorized', [])
         return([])
 
+    if 'JWT_GROUP_NAME' in env and 'JWT_APP_UID' in env:
+        found = False
+        for group in payload.get('urs-groups', []):
+            if group.get('name') == env['JWT_GROUP_NAME'] and group.get('app_uid') == env['JWT_APP_UID']:
+                found = True
+        if not found:
+            start_response('403 Forbidden', [])
+            return([])
+
     user_id = payload[env['JWT_USER_FIELD']].encode()
     start_response('200 OK', [('Content-Type','text/html')])
     return [user_id]
