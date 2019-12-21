@@ -5,8 +5,6 @@ RUN apt update -y; \
     pip3 install uwsgi pyjwt supervisor;
 
 COPY content /content
-COPY nginx /etc/nginx
-COPY src /src
-COPY supervisord.conf /etc
+COPY etc /etc
 
 ENTRYPOINT ["/usr/local/bin/supervisord"]
