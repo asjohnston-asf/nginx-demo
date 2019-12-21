@@ -1,2 +1,2 @@
-nohup uwsgi --wsgi-file /src/auth.py --socket :3031 --buffer-size 32768 &
+nohup uwsgi --ini /src/auth.ini &
 nginx -g "daemon off;"
